@@ -1,3 +1,4 @@
+import 'aliyun_ai_generator.dart';
 import 'big_model_ai_generator.dart';
 
 abstract class AiGenerator {
@@ -36,5 +37,12 @@ abstract class AiGenerator {
   }) => BigModelAIGenerator(
     apiKey: apiKey,
     model: BigModelAIGenerator.MODEL_glm_4_5_flash,
+  );
+
+  factory AiGenerator.createAliWith_qwen_plus({
+    required String apiKey,
+  }) => AliYunAIGenerator(
+    apiKey: apiKey,
+    model: AliYunAIGenerator.MODEL_qwen_plus,
   );
 }
