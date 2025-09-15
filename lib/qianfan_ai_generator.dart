@@ -1,19 +1,17 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
+import 'i_ai_generator.dart';
 import 'package:http/http.dart' as http;
-import 'package:jin_ai_generator/i_ai_generator.dart';
 
-class AliYunAIGenerator implements AiGenerator {
-  static const String MODEL_qwen_plus = "qwen-plus";
+class QianfanAIGenerator implements AiGenerator {
+
+  static const String MODEL_ernie_3_5_8k = 'ernie-3.5-8k';
 
   final http.Client _httpClient = http.Client();
 
-  AliYunAIGenerator({required String apiKey, String model = MODEL_qwen_plus})
-      : _apiKey = apiKey,
-        _model = model;
-
-  String _apiKey;
+  QianfanAIGenerator({String apiKey = "", String model = ""})
+    : _apiKey = apiKey,
+      _model = model;
 
   @override
   String get apiKey => _apiKey;
@@ -23,8 +21,6 @@ class AliYunAIGenerator implements AiGenerator {
     _apiKey = value;
   }
 
-  String _model;
-
   @override
   String get model => _model;
 
@@ -33,6 +29,10 @@ class AliYunAIGenerator implements AiGenerator {
     _model = value;
   }
 
+  String _apiKey;
+
+  String _model;
+
 
   @override
   Future<String> generate(
@@ -40,20 +40,24 @@ class AliYunAIGenerator implements AiGenerator {
         String systemPrompt = "",
         int maxTokens = 1024,
         bool withThinking = false,
+        bool jsonResponse = false,
       }) async {
     try {
       final url = Uri.parse(
-        'https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions',
+        'https://qianfan.baidubce.com/v2/chat/completions',
       );
+
+      // 添加超时时间
       final headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $_apiKey',
+
       };
       final body = {
         'model': _model,
         'max_tokens': maxTokens,
         'enable_thinking': false,
-        'response_format': {'type': 'json_object'},
+        'response_format': jsonResponse ? {'type': 'json_object'} : null,
         'messages': [
           {'role': 'user', 'content': prompt},
           {'role': 'system', 'content': systemPrompt},
@@ -63,12 +67,13 @@ class AliYunAIGenerator implements AiGenerator {
       final response = await _httpClient.post(
         url,
         headers: headers,
+
         body: jsonEncode(body),
       );
 
       if (response.statusCode == 200) {
         final jsonResponse = jsonDecode(response.body);
-        if (kDebugMode) {
+        if (AiGenerator.isDebug) {
           print(jsonResponse);
           print("choices length: ${jsonResponse['choices'].length}");
           print("text: ${jsonResponse['choices'][0]['message']['content']}");

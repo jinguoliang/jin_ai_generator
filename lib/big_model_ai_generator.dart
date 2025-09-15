@@ -1,17 +1,16 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:jin_ai_generator/i_ai_generator.dart';
 
 class BigModelAIGenerator implements AiGenerator {
-  static const String MODEL_glm_4_5 = "glm-4.5";
   static const String MODEL_glm_4_5_air = "GLM-4.5-Air";
   static const String MODEL_glm_4_5_flash = "GLM-4.5-Flash";
+  static const String MODEL_glm_z1_flash = "glm-z1-flash";
 
   final http.Client _httpClient = http.Client();
 
-  BigModelAIGenerator({required String apiKey, String model = MODEL_glm_4_5})
+  BigModelAIGenerator({required String apiKey, String model = MODEL_glm_4_5_air})
     : _apiKey = apiKey,
       _model = model;
 
@@ -42,6 +41,7 @@ class BigModelAIGenerator implements AiGenerator {
     String systemPrompt = "",
     int maxTokens = 1024,
     bool withThinking = false,
+    bool jsonResponse = false,
   }) async {
     if (withThinking) {
       return _generateWithThinking(prompt, systemPrompt, maxTokens);
@@ -125,7 +125,7 @@ class BigModelAIGenerator implements AiGenerator {
 
       if (response.statusCode == 200) {
         final jsonResponse = jsonDecode(response.body);
-        if (kDebugMode) {
+        if (AiGenerator.isDebug) {
           print(jsonResponse);
           print("choices length: ${jsonResponse['choices'].length}");
           print("text: ${jsonResponse['choices'][0]['message']['content']}");
