@@ -39,7 +39,7 @@ class BailianAIGenerator implements AiGenerator {
         String systemPrompt = "",
         int maxTokens = 1024,
         bool withThinking = false,
-        bool jsonResponse = false,
+        bool jsonResponse = true,
       }) async {
     try {
       final url = Uri.parse(
@@ -55,7 +55,7 @@ class BailianAIGenerator implements AiGenerator {
       final body = {
         'model': _model,
         'max_tokens': maxTokens,
-        'enable_thinking': false,
+        'enable_thinking': withThinking,
         'response_format': jsonResponse ? {'type': 'json_object'} : null,
         'messages': [
           {'role': 'user', 'content': prompt},
