@@ -22,7 +22,7 @@
 
 [阿里百炼 api 平台:  Bailian](https://bailian.console.aliyun.com/?tab=model#/model-market)
 
-![百炼.png](./https://github.com/jinguoliang/jin_ai_generator/blob/main/bailian.png?raw=true)
+![百炼.png](https://github.com/jinguoliang/jin_ai_generator/blob/main/bailian.png?raw=true)
 
 ![百炼2.png](https://github.com/jinguoliang/jin_ai_generator/blob/main/bailian2.png?raw=true)
 
@@ -30,17 +30,17 @@
 需要登录，申请API Key，选择想要的大模型 key。
 有免费的模型
 
-![https://github.com/jinguoliang/jin_ai_generator/blob/main/big_model.png](./big_model.png)
+![big_model.png](https://github.com/jinguoliang/jin_ai_generator/blob/main/big_model.png?raw=true)
 
 [百度千帆 api 平台：Qianfan](https://console.bce.baidu.com/qianfan/modelcenter/model/buildIn/list)
 是个模型市场，但是模型 id 为什么不能想起他模型市场一样，很容易找到呢？
 
-![千帆.png](https://github.com/jinguoliang/jin_ai_generator/blob/main/qianfan.png)
+![千帆.png](https://github.com/jinguoliang/jin_ai_generator/blob/main/qianfan.png?raw=true)
 
-![千帆2.png](https://github.com/jinguoliang/jin_ai_generator/blob/main/qianfan2.png)
+![千帆2.png](https://github.com/jinguoliang/jin_ai_generator/blob/main/qianfan2.png?raw=true)
 
 惨绝人寰，别人可以在市场界面就能找到模型 id，它非要跳四个页面才能找到模型ID
-![千帆3.png](https://github.com/jinguoliang/jin_ai_generator/blob/main/qianfan3.png)
+![千帆3.png](https://github.com/jinguoliang/jin_ai_generator/blob/main/qianfan3.png?raw=true)
 
 
 
