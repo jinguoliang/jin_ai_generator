@@ -22,7 +22,7 @@
 
 [阿里百炼 api 平台:  Bailian](https://bailian.console.aliyun.com/?tab=model#/model-market)
 
-![百炼.png](https://github.com/jinguoliang/jin_ai_generator/blob/main/%E7%99%BE%E7%82%BC.png?raw=true)
+![百炼.png](./bailian.png)
 
 ![百炼2.png](./bailian2.png)
 
