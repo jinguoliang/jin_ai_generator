@@ -68,21 +68,9 @@ abstract class AiGenerator {
   );
 
   factory AiGenerator.createOpenAIWith({
+    required String baseUrl,
     required String apiKey,
     required String model,
-  }) => OpenAIAIGenerator(apiKey: apiKey, model: model);
+  }) => OpenAIAIGenerator(apiKey: apiKey, model: model, baseUrl: baseUrl);
 
-  factory AiGenerator.createOpenAIWith_gpt_3_5_turbo({
-    required String apiKey,
-  }) => OpenAIAIGenerator(
-    apiKey: apiKey,
-    model: OpenAIAIGenerator.MODEL_gpt_3_5_turbo,
-  );
-
-  factory AiGenerator.createOpenAIWith_gpt_4({
-    required String apiKey,
-  }) => OpenAIAIGenerator(
-    apiKey: apiKey,
-    model: OpenAIAIGenerator.MODEL_gpt_4,
-  );
 }
