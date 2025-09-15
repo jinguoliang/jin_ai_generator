@@ -9,8 +9,8 @@ class BailianAIGenerator implements AiGenerator {
   final http.Client _httpClient = http.Client();
 
   BailianAIGenerator({required String apiKey, String model = MODEL_qwen_plus})
-      : _apiKey = apiKey,
-        _model = model;
+    : _apiKey = apiKey,
+      _model = model;
 
   String _apiKey;
 
@@ -32,15 +32,14 @@ class BailianAIGenerator implements AiGenerator {
     _model = value;
   }
 
-
   @override
   Future<String> generate(
-      String prompt, {
-        String systemPrompt = "",
-        int maxTokens = 1024,
-        bool withThinking = false,
-        bool jsonResponse = true,
-      }) async {
+    String prompt, {
+    String systemPrompt = "",
+    int maxTokens = 1024,
+    bool withThinking = false,
+    bool jsonResponse = true,
+  }) async {
     try {
       final url = Uri.parse(
         'https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions',
@@ -50,7 +49,6 @@ class BailianAIGenerator implements AiGenerator {
       final headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $_apiKey',
-
       };
       final body = {
         'model': _model,
@@ -95,6 +93,4 @@ class BailianAIGenerator implements AiGenerator {
   void close() {
     _httpClient.close();
   }
-
-
 }

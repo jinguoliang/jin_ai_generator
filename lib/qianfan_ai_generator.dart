@@ -4,7 +4,6 @@ import 'i_ai_generator.dart';
 import 'package:http/http.dart' as http;
 
 class QianfanAIGenerator implements AiGenerator {
-
   static const String MODEL_ernie_3_5_8k = 'ernie-3.5-8k';
 
   final http.Client _httpClient = http.Client();
@@ -33,25 +32,21 @@ class QianfanAIGenerator implements AiGenerator {
 
   String _model;
 
-
   @override
   Future<String> generate(
-      String prompt, {
-        String systemPrompt = "",
-        int maxTokens = 1024,
-        bool withThinking = false,
-        bool jsonResponse = false,
-      }) async {
+    String prompt, {
+    String systemPrompt = "",
+    int maxTokens = 1024,
+    bool withThinking = false,
+    bool jsonResponse = false,
+  }) async {
     try {
-      final url = Uri.parse(
-        'https://qianfan.baidubce.com/v2/chat/completions',
-      );
+      final url = Uri.parse('https://qianfan.baidubce.com/v2/chat/completions');
 
       // 添加超时时间
       final headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $_apiKey',
-
       };
       final body = {
         'model': _model,
@@ -96,6 +91,4 @@ class QianfanAIGenerator implements AiGenerator {
   void close() {
     _httpClient.close();
   }
-
-
 }

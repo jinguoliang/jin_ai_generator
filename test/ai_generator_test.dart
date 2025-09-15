@@ -10,7 +10,6 @@ import 'package:jin_ai_generator/big_model_ai_generator.dart';
 import 'package:jin_ai_generator/i_ai_generator.dart';
 import 'package:test/test.dart';
 
-
 void main() {
   callAiGenerator(AiGenerator aiGenerator) async {
     final result = await aiGenerator.generate(
@@ -44,10 +43,7 @@ void main() {
 
   test('Qianfan generate message', () async {
     await callAiGenerator(
-      AiGenerator.createQianfanWith(
-        apiKey: "your_api_key",
-        model: 'qwen3-32b',
-      ),
+      AiGenerator.createQianfanWith(apiKey: "your_api_key", model: 'qwen3-32b'),
     );
   });
 

@@ -72,5 +72,4 @@ abstract class AiGenerator {
     required String apiKey,
     required String model,
   }) => OpenAIAIGenerator(apiKey: apiKey, model: model, baseUrl: baseUrl);
-
 }

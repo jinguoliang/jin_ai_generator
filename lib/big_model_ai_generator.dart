@@ -10,9 +10,11 @@ class BigModelAIGenerator implements AiGenerator {
 
   final http.Client _httpClient = http.Client();
 
-  BigModelAIGenerator({required String apiKey, String model = MODEL_glm_4_5_air})
-    : _apiKey = apiKey,
-      _model = model;
+  BigModelAIGenerator({
+    required String apiKey,
+    String model = MODEL_glm_4_5_air,
+  }) : _apiKey = apiKey,
+       _model = model;
 
   String _apiKey;
 
@@ -33,7 +35,6 @@ class BigModelAIGenerator implements AiGenerator {
   set model(String value) {
     _model = value;
   }
-
 
   @override
   Future<String> generate(
@@ -60,7 +61,9 @@ class BigModelAIGenerator implements AiGenerator {
     int maxTokens,
   ) async {
     try {
-      final url = Uri.parse('https://open.bigmodel.cn/api/anthropic/v1/messages');
+      final url = Uri.parse(
+        'https://open.bigmodel.cn/api/anthropic/v1/messages',
+      );
       final headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $_apiKey',
