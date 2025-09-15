@@ -1,7 +1,9 @@
 name: jin_ai_generator
 description: "一个适合刚接触 AI 来做 Flutter 应用的库"
-version: 1.0.0+2
+version: 1.0.1
+
 homepage: https://github.com/jinguoliang/jin_ai_generator
+
 repository: https://github.com/jinguoliang/jin_ai_generator
 
 environment:
