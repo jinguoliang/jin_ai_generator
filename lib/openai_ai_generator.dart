@@ -2,7 +2,6 @@ import 'package:jin_ai_generator/i_ai_generator.dart';
 import 'package:openai_dart/openai_dart.dart';
 
 class OpenAIAIGenerator implements AiGenerator {
-
   late OpenAIClient _openAiClient;
   String _model;
   String _apiKey;
@@ -12,8 +11,8 @@ class OpenAIAIGenerator implements AiGenerator {
     required String apiKey,
     required String model,
   }) : _model = model,
-  _apiKey = apiKey,
-        _openAiClient = OpenAIClient(baseUrl: baseUrl, apiKey: apiKey);
+       _apiKey = apiKey,
+       _openAiClient = OpenAIClient(baseUrl: baseUrl);
 
   @override
   String get apiKey => _apiKey;
@@ -40,15 +39,14 @@ class OpenAIAIGenerator implements AiGenerator {
     bool jsonResponse = false,
   }) async {
     try {
+      _openAiClient.apiKey = _apiKey;
       final res = await _openAiClient.createChatCompletion(
         request: CreateChatCompletionRequest(
           maxTokens: maxTokens,
 
           model: ChatCompletionModel.modelId(_model),
           messages: [
-            ChatCompletionMessage.system(
-              content: systemPrompt,
-            ),
+            ChatCompletionMessage.system(content: systemPrompt),
             ChatCompletionMessage.user(
               content: ChatCompletionUserMessageContent.string(prompt),
             ),
